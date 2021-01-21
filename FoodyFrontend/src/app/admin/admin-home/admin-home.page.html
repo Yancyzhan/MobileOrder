@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Admin Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="rstMenu" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input name="name" type="text" placeholder="Name" [(ngModel)]="restaurant.name" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Description</ion-label>
+    <ion-input name="description" type="text" placeholder="Description" [(ngModel)]="restaurant.description"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Current Image</ion-label>
+    <img src="{{restaurantService.hostName}}{{restaurant.imagePath ? restaurant.imagePath : '/logo'}}">
+  </ion-item>
+  <ion-item>
+    <input type="file" name="rstImage"  (change)="upload($event)" />
+  </ion-item>
+  <ion-button size="large" color="primary" type="submit" (click)="save()">Save</ion-button>
+</ion-content>

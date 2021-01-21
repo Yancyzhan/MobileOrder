@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Order</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="rstMenu" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row style="height: 100%;">
+    <ion-col size="3" id="order">
+      <ion-content color="tertiary">
+        <ion-list>
+          <ion-item *ngFor="let order of orders" (click)="orderClick(order)" color="{{order.selectedColor}}"
+          [ngClass]="{'new-order': order.class === 'new-order'}">
+            <ion-label>
+              <h2 class="ion-text-wrap"># {{order.id}}</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-col>
+    <ion-col size="9">
+      <ion-content id="order-content">
+        <ion-label *ngIf="!orders || orders.length == 0">There is no order now.</ion-label>
+        <app-order-item [order]="orderInShow"></app-order-item>
+        <ion-button size="large" expand="block" *ngIf="orderInShow && orderInShow.status === 'sent'"
+        (click)="updateOrderStatus()">Done</ion-button>
+      </ion-content>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+	<ion-toolbar id="name" color="primary">
+		<ion-thumbnail slot="start">
+			<img src="{{rstService.hostName}}{{restaurant.imagePath ? restaurant.imagePath : '/logo'}}">
+		</ion-thumbnail>
+		<ion-label slot="start">
+			<h2 class="ion-text-wrap">&nbsp;{{restaurant.name}}</h2>
+			<h3>&nbsp;{{restaurant.description}}</h3>
+		</ion-label>
+  	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-row style="height: 100%;">
+		<ion-col size="3" id="category">
+			<ion-content color="tertiary">
+				<ion-list>
+					<ion-item *ngFor="let category of categories" (click)="categoryClick(category)" color="{{category.selectedColor}}">
+						<ion-label class="ion-text-wrap">{{category.name}}</ion-label>
+					</ion-item>
+				</ion-list>
+			</ion-content>
+		</ion-col>
+		<ion-col size="9">
+			<ion-content id="menu-content">
+				<app-menu-item [category]="categoryInShow" [rstId]="rstId"></app-menu-item>
+			</ion-content>
+		</ion-col>
+	</ion-row>
+</ion-content>

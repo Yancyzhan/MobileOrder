@@ -1,0 +1,19 @@
+<ion-list *ngIf="category && category.items">
+  <ion-item *ngFor="let item of category.items" (click)="orderItemPopup(item)">
+    <ion-thumbnail slot="start">
+      <img src="{{menuService.hostName}}{{item.imagePath ? item.imagePath : '/logo'}}">
+    </ion-thumbnail>
+    <ion-label>
+      <h2 class="ion-text-wrap">{{item.name}}</h2>
+      <p>{{item.description}}</p>
+      <ion-chip>
+        <ion-label>$ {{item.price | number:'1.2-2'}}</ion-label>
+      </ion-chip>
+    </ion-label>
+  </ion-item>
+</ion-list>
+<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+  <ion-fab-button color="primary" (click)="showOrder()">
+    <ion-icon name="restaurant"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

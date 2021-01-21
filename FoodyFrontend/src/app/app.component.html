@@ -1,0 +1,46 @@
+<ion-app>
+  <ion-menu side="start" menuId="userMenu" contentId="content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="people" color="primary"></ion-icon> {{userName}}
+        </ion-item>
+        <ion-menu-toggle>
+          <ion-button expand="full" color="light">User Profile</ion-button>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-button expand="full" (click)="userService.logout()">Log out</ion-button>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-menu side="end" menuId="rstMenu" contentId="content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="restaurant" color="primary"></ion-icon> {{rstName}}
+        </ion-item>
+        <ion-menu-toggle>
+          <ion-button expand="full" color="light">User Profile</ion-button>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-button expand="full" (click)="restaurantService.logout()">Log out</ion-button>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="content"></ion-router-outlet>
+  
+</ion-app>
